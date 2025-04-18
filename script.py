@@ -64,7 +64,7 @@ if __name__ == "__main__":
     model_kwargs = dict(
         attn_implementation="eager", # Use "flash_attention_2" when running on Ampere or newer GPU
         torch_dtype=torch_dtype, # What torch dtype to use, defaults to auto
-        device_map="auto", # Let torch decide how to load the model
+        device_map={'': torch.cuda.current_device()}, # Explicitly place model on current CUDA device
     )
 
     # BitsAndBytesConfig: Enables 4-bit quantization to reduce model size/memory usage
@@ -150,7 +150,7 @@ if __name__ == "__main__":
     # Load Model with PEFT adapter
     model = model_class.from_pretrained(
     model_id,
-    device_map="auto",
+    device_map={'': torch.cuda.current_device()},
     torch_dtype=torch_dtype,
     attn_implementation="eager",
     )

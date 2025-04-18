@@ -9,7 +9,7 @@ readme = "README.md"
 package-mode = false
 requires-python = ">=3.11,<3.12"
 dependencies = [
-    "torch (==2.5.1)",
+
     "transformers (>=4.51.3,<5.0.0)",
     "huggingface-hub (>=0.30.2,<0.31.0)",
     "tensorboard (>=2.19.0,<3.0.0)",
@@ -22,6 +22,7 @@ dependencies = [
     "peft (==0.14.0)",
     "sentencepiece (>=0.2.0,<0.3.0)",
     "flash-attn (==1.0.5)",
+    "torch (==2.5.1)",
 ]
 
 [[tool.poetry.source]]
@@ -30,6 +31,9 @@ url = "https://download.pytorch.org/whl/cu124"
 priority = "explicit"
 
 
+
+[tool.poetry.dependencies]
+torch = {source = "torch"}
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
